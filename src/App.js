@@ -15,7 +15,7 @@ const App = () => {
       <div id="header">
         <div id="header-area">
           <Link to="/">
-            <img src="images/icons/logo.png" alt="logo" />
+            <h1>SunnyShop</h1>
           </Link>
           <Button size="large" icon={<UploadOutlined />} onClick={()=>{navigate('/upload')}}>상품업로드</Button>
         </div>
