@@ -26,18 +26,22 @@ const ProductPage = () => {
 
 	return (
 		<>
-			<div id="image-box">
-				<img src={`${API_URL}/${product.imageUrl}`} alt={product.name} />
-			</div>
-			<div id="profile-box">
-				<img src="/images/icons/avatar.png" alt={product.seller} />
-				<span className="product-seller">{product.seller}</span>
-			</div>
-			<div id="content-box">
-				<div id="name">{product.name}</div>
-				<div id="price">{product.price} 원</div>
-				<div id="createAt">2022.01.05</div>
-				<div id="desc">{product.description}</div>
+			<div id="product-wrap">
+				<div id="image-box">
+					<img src={`${API_URL}/${product.imageUrl}`} alt={product.name} />
+				</div>
+				<div id="product-cont">
+					<div id="profile-box">
+						<img src="/images/icons/flower.png" alt={product.seller} />
+						<span className="product-seller">{product.seller}</span>
+					</div>
+					<div id="content-box">
+						<div id="name">{product.name}</div>
+						<div id="createAt">2022.01.05</div>
+						<div id="price">{product.price} 원</div>
+						<div id="desc">{product.description}</div>
+					</div>
+				</div>
 			</div>
 		</>
 	);

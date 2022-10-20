@@ -70,7 +70,7 @@ const UploadPage = () => {
           </Form.Item>
           <Divider />
           <Form.Item
-            label={<div className="upload-label">판매자명</div>}
+            label={<div className="upload-label">카테고리</div>}
             name="seller"
             rules={[{ required: true, message: "판매자명을 입력해주세요" }]}
           >

@@ -58,7 +58,7 @@ const MainPage = () => {
             return (
               <div className="product-card" key={idx}>
                 <Link className="product-link" to={`/product/${product.id}`}>
-                  <div>
+                  <div className="product-img-box">
                     <img
                       className="product-img"
                       src={`${API_URL}/${product.imageUrl}`}
@@ -74,7 +74,7 @@ const MainPage = () => {
                       <div className="product-seller">
                         <img
                           className="product-avatar"
-                          src="images/icons/avatar.png"
+                          src="images/icons/flower.png"
                           alt=""
                         />
                         {product.seller}
