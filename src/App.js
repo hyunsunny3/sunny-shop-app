@@ -29,25 +29,25 @@ const App = () => {
 
       <div id="footer">
         <div id="footer-area">
-          <div class="footer-logo">
+          <div className="footer-logo">
             <a>
               <img src="images/icons/logo.png"></img>
             </a>
           </div>
-          <div class="footer-txt">
+          <div className="footer-txt">
             <ul>
-              <li class="fnb">
+              <li className="fnb">
                 <span><a>회사소개</a></span>
                 <span><a>이용약관</a></span>
                 <span><a>개인정보처리방침</a></span>
                 <span><a>이메일무단수집거부</a></span>
               </li>
-              <li class="footer-info">
+              <li className="footer-info">
                 <span>사업자등록번호 : 302-95-01247</span>
                 <span>대표자 : 윤현선</span>
                 <span>주소 : 경기도 성남시 수정구 수진2동</span>
               </li>
-              <li class="copyright">
+              <li className="copyright">
                 <p>Copyright © 2022 HSinterior All rights reserved</p>
               </li>
             </ul>
