@@ -17,21 +17,25 @@ const UploadPage = () => {
   const navigate = useNavigate();
   const [imageUrl, setImageUrl] = useState(null);
 
-  const onSubmit = (values) => {
-    axios
-      .post(`${API_URL}/products`, {
+  const onSubmit = async (values) => {
+    try {
+      const price = values.price >= 0 ? values.price : 0; 
+      const response = await axios.post(`${API_URL}/products`, {
         name: values.name,
         description: values.description,
         seller: values.seller,
-        price: parseInt(values.price),
+        price: price,
         imageUrl: imageUrl,
-      })
-      .then((result) => {
-        navigate("/", { replace: true });
-      })
-      .catch((error) => {
-        message.error(`상품등록시 에러가 발생했습니다: ${error.message}`);
       });
+  
+      // 응답 처리
+      if (response.status === 201) {
+        message.success("상품이 성공적으로 등록되었습니다.");
+        navigate("/", { replace: true });
+      }
+    } catch (error) {
+      message.error(`상품등록시 에러가 발생했습니다: ${error.message}`);
+    }
   };
 
   const onChangeImage = (info) => {
