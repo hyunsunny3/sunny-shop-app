@@ -17,8 +17,7 @@ const MainPage = () => {
     axios
       .get(`${API_URL}/products`)
       .then((res) => {
-        products = res.data.product;
-        setProducts(products);
+        setProducts(res.data.product);
       })
       .catch((err) => {
         return console.log(err);
@@ -27,15 +26,17 @@ const MainPage = () => {
     axios
     .get(`${API_URL}/banners`)
     .then((res) => {
-      banners = res.data.banners;
-      setBanners(banners);
+      setBanners(res.data.banners);
     })
     .catch((err) => {
       return console.log(err);
     });  
   
     }, []);
-  if (products === undefined) {
+  // if (products === undefined) {
+  //   return <h1>상품정보를 받고있습니다.</h1>;
+  // }
+  if (products.length === 0) {
     return <h1>상품정보를 받고있습니다.</h1>;
   }
   return (
