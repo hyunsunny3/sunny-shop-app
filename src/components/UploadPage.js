@@ -16,6 +16,7 @@ import {
 const UploadPage = () => {
   const navigate = useNavigate();
   const [imageUrl, setImageUrl] = useState(null);
+
   const onSubmit = (values) => {
     axios
       .post(`${API_URL}/products`, {
@@ -29,23 +30,27 @@ const UploadPage = () => {
         navigate("/", { replace: true });
       })
       .catch((error) => {
-        message.error(`상품등록시 에러가 발생했습니다 ${error.message}`);
+        message.error(`상품등록시 에러가 발생했습니다: ${error.message}`);
       });
   };
-  const onChageImage = (info) => {
+
+  const onChangeImage = (info) => {
     if (info.file.status === "uploading") {
       return;
     }
     if (info.file.status === "done") {
       const response = info.file.response;
-      const imageUrl = response.imageUrl;
-      setImageUrl(imageUrl);
+      if (response && response.imageUrl) {
+        setImageUrl(response.imageUrl);
+      } else {
+        message.error("이미지 URL을 받을 수 없습니다.");
+      }
     }
   };
 
   return (
     <div id="body">
-      <div id="load-container">
+      <div id="upload-container">
         <Form name="uploadForm" onFinish={onSubmit}>
           <Form.Item
             name="upload"
@@ -56,13 +61,13 @@ const UploadPage = () => {
               action={`${API_URL}/image`}
               listType="picture"
               showUploadList={false}
-              onChange={onChageImage}
+              onChange={onChangeImage}
             >
               {imageUrl ? (
-                <img id="upload-img" src={`${API_URL}/${imageUrl}`} />
+                <img id="upload-img" src={`${API_URL}/${imageUrl}`} alt="업로드된 이미지" />
               ) : (
                 <div id="upload-img-placeholder">
-                  <img src="/images/icons/camera.png" />
+                  <img src="/images/icons/camera.png" alt="카메라 아이콘" />
                   <span>이미지업로드</span>
                 </div>
               )}
@@ -70,7 +75,7 @@ const UploadPage = () => {
           </Form.Item>
           <Divider />
           <Form.Item
-            label={<div className="upload-label">카테고리</div>}
+            label={<div className="upload-label">판매자명</div>}
             name="seller"
             rules={[{ required: true, message: "판매자명을 입력해주세요" }]}
           >
