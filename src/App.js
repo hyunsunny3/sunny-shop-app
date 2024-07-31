@@ -1,7 +1,6 @@
 import { Route, Routes, Link, useNavigate } from "react-router-dom";
 import 'antd/dist/antd.css';
 import "./App.css";
-import { UploadOutlined } from "@ant-design/icons";
 import MainPage from "./components/MainPage";
 import ProductPage from "./components/ProductPage";
 import UploadPage from "./components/UploadPage";
@@ -15,7 +14,7 @@ const App = () => {
       <div id="header">
         <div id="header-area">
           <Link to="/">
-            <h1><img src="images/icons/logo.png"></img></h1>
+            <h1><img src="images/icons/logo.png" alt="logo"></img></h1>
           </Link>
           <Button size="large" onClick={()=>{navigate('/upload')}}>상품업로드</Button>
         </div>
@@ -30,17 +29,17 @@ const App = () => {
       <div id="footer">
         <div id="footer-area">
           <div className="footer-logo">
-            <a>
-              <img src="images/icons/logo.png"></img>
-            </a>
+            <Link to="/">
+              <img src="images/icons/logo.png" alt="footer logo"></img>
+            </Link>
           </div>
           <div className="footer-txt">
             <ul>
               <li className="fnb">
-                <span><a>회사소개</a></span>
-                <span><a>이용약관</a></span>
-                <span><a>개인정보처리방침</a></span>
-                <span><a>이메일무단수집거부</a></span>
+                <span><Link>회사소개</Link></span>
+                <span><Link>이용약관</Link></span>
+                <span><Link>개인정보처리방침</Link></span>
+                <span><Link>이메일무단수집거부</Link></span>
               </li>
               <li className="footer-info">
                 <span>사업자등록번호 : 302-95-01247</span>
