@@ -1,10 +1,11 @@
 import { Route, Routes, Link, useNavigate } from "react-router-dom";
 import 'antd/dist/antd.css';
 import "./App.css";
-import MainPage from "./components/MainPage";
+import ProductList from "./components/ProductList";
 import ProductPage from "./components/ProductPage";
 import UploadPage from "./components/UploadPage";
 import { Button } from "antd";
+import MianPage from "./components/MainPage";
 
 const App = () => {
 	let navigate=useNavigate();
@@ -16,12 +17,13 @@ const App = () => {
           <Link to="/">
             <h1><img src="images/icons/logo.png" alt="logo"></img></h1>
           </Link>
-          <Button size="large" onClick={()=>{navigate('/upload')}}>상품업로드</Button>
+          <Button size="large" onClick={()=>{navigate('/productList')}}>상품리스트</Button>
         </div>
       </div>
 
       <Routes>
-        <Route path="/" element={<MainPage />} />
+        <Route path="/" element={<MianPage />} />
+        <Route path="/productList" element={<ProductList />} />
         <Route path="/upload" element={<UploadPage />} />
         <Route path="product/:id" element={<ProductPage />} />
       </Routes>

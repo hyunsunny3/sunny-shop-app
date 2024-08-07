@@ -1,5 +1,4 @@
-require('dotenv').config(); // .env 파일의 변수를 로드
-
+const models = require('./models');
 const express = require('express');
 const cors = require('cors');
 const multer = require('multer');
@@ -59,5 +58,18 @@ app.post('/products', async (req, res) => {
 
 // 서버 시작
 app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
+  console.log('Hyunsunny의 서버가 구동중 입니다.');
+  //데이터베이스와 동기화 하는 함수 작성
+  //.sync()메소드를 통해 db를 연결 -> models.sequelize.sync()
+    models.sequelize	
+      .sync()
+      .then(() => {
+          console.log('✓ DB 연결 성공');
+      })
+      .catch(function (err) {
+          console.error(err);
+          console.log('✗ DB 연결 에러');
+        //에러발생시 서버프로세스 종료
+          process.exit();
+      });
 });
